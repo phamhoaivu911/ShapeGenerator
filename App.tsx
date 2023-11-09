@@ -14,6 +14,8 @@ import {
 } from 'react-native';
 import React from 'react';
 
+import Square from './src/components/Square';
+
 const App: () => JSX.Element = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -29,7 +31,9 @@ const App: () => JSX.Element = () => {
       />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}></ScrollView>
+        style={backgroundStyle}>
+        <Square color="red" size={100} />
+      </ScrollView>
     </SafeAreaView>
   );
 };
