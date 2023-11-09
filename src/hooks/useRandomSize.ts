@@ -1,3 +1,4 @@
+import {useRef} from 'react';
 import {useWindowDimensions} from 'react-native';
 
 const MAX_WIDTH_PERCENTAGE = 0.45;
@@ -9,7 +10,9 @@ const useRandomSize = () => {
   const min = Math.max(width, height) * MIN_WIDTH_PERCENTAGE;
   const max = Math.min(width, height) * MAX_WIDTH_PERCENTAGE;
 
-  return Math.random() * (max - min) + min;
+  const sizeRef = useRef(Math.random() * (max - min) + min);
+
+  return sizeRef.current;
 };
 
 export default useRandomSize;
