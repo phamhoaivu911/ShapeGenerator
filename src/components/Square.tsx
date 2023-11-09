@@ -26,9 +26,6 @@ const Square: React.FC<SquareProps> = ({position}) => {
     top: position.y - size / 2,
   };
 
-  console.log('pattern', pattern);
-  console.log('size', size);
-
   return (
     <Image
       with={size}
