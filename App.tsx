@@ -7,12 +7,16 @@
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
-import {SafeAreaView, StatusBar, View, useColorScheme} from 'react-native';
+import {StatusBar, useColorScheme} from 'react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 
-import Circle from './src/components/Circle';
-import Square from './src/components/Square';
-import Triangle from './src/components/Triangle';
+import CirclesScreen from './src/screens/CirclesScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import SquaresScreen from './src/screens/SquaresScreen';
+import TrianglesScreen from './src/screens/TrianglesScreen';
+
+const Tab = createBottomTabNavigator();
 
 const App: () => JSX.Element = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -23,17 +27,16 @@ const App: () => JSX.Element = () => {
 
   return (
     <NavigationContainer>
-      <SafeAreaView style={{flex: 1, backgroundColor: 'transparent'}}>
-        <StatusBar
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-          backgroundColor={backgroundStyle.backgroundColor}
-        />
-        <View style={{flex: 1}}>
-          <Square position={{x: 250, y: 250}} />
-          <Circle position={{x: 350, y: 350}} />
-          <Triangle position={{x: 250, y: 500}} />
-        </View>
-      </SafeAreaView>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={backgroundStyle.backgroundColor}
+      />
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Squares" component={SquaresScreen} />
+        <Tab.Screen name="Circles" component={CirclesScreen} />
+        <Tab.Screen name="Triangles" component={TrianglesScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
