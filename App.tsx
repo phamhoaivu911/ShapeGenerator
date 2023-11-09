@@ -14,6 +14,7 @@ import React from 'react';
 import CirclesScreen from './src/screens/CirclesScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import SquaresScreen from './src/screens/SquaresScreen';
+import TabBarIcon from './src/components/TabBarIcon';
 import TrianglesScreen from './src/screens/TrianglesScreen';
 
 const Tab = createBottomTabNavigator();
@@ -32,9 +33,21 @@ const App: () => JSX.Element = () => {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Squares" component={SquaresScreen} />
-        <Tab.Screen name="Circles" component={CirclesScreen} />
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{tabBarIcon: TabBarIcon.HomeIcon}}
+        />
+        <Tab.Screen
+          name="Squares"
+          component={SquaresScreen}
+          options={{tabBarIcon: TabBarIcon.SquareIcon}}
+        />
+        <Tab.Screen
+          name="Circles"
+          component={CirclesScreen}
+          options={{tabBarIcon: TabBarIcon.CircleIcon}}
+        />
         <Tab.Screen name="Triangles" component={TrianglesScreen} />
       </Tab.Navigator>
     </NavigationContainer>
