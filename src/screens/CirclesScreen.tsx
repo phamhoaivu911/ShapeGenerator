@@ -1,15 +1,17 @@
-import {View} from 'react-native';
 import React from 'react';
 
 import Circle from '../components/Circle';
+import ScreenContainer from '../components/ScreenContainer';
 
 const SquaresScreen = () => {
   return (
-    <View style={{flex: 1}}>
-      <Circle position={{x: 250, y: 250}} />
-      <Circle position={{x: 350, y: 350}} />
-      <Circle position={{x: 250, y: 500}} />
-    </View>
+    <ScreenContainer>
+      {pressedPositions => {
+        return pressedPositions.map((position, index) => {
+          return <Circle key={index} position={position} />;
+        });
+      }}
+    </ScreenContainer>
   );
 };
 
