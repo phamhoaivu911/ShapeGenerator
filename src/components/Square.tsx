@@ -1,6 +1,6 @@
 import {
   ActivityIndicator,
-  Image,
+  Animated,
   StyleProp,
   StyleSheet,
   View,
@@ -10,12 +10,17 @@ import React from 'react';
 
 import {ShapeProps} from '../types';
 import DoubleTapView from './DoubleTapView';
+import useFadeInAnimationStyle from '../hooks/useFadeInAnimationStyle';
 import useRandomPattern from '../hooks/useRandomPattern';
 import useRandomSize from '../hooks/useRandomSize';
 
 const Square: React.FC<ShapeProps> = ({position}) => {
   const [pattern, isFetchingPattern, togglePattern] = useRandomPattern();
   const size = useRandomSize();
+  const fadeInAnimationStyle = useFadeInAnimationStyle(
+    size,
+    !isFetchingPattern,
+  );
 
   const squareStyle: StyleProp<ViewStyle> = {
     width: size,
@@ -28,8 +33,8 @@ const Square: React.FC<ShapeProps> = ({position}) => {
   return (
     <DoubleTapView onDoubleTap={togglePattern}>
       <View style={squareStyle}>
-        <Image
-          style={{width: size, height: size}}
+        <Animated.Image
+          style={{width: size, height: size, ...fadeInAnimationStyle}}
           resizeMode="cover"
           source={typeof pattern === 'string' ? {uri: pattern} : pattern}
         />
