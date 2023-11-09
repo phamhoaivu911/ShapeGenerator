@@ -31,7 +31,7 @@ const Square: React.FC<ShapeProps> = ({position}) => {
         <Image
           style={{width: size, height: size}}
           resizeMode="cover"
-          source={{uri: pattern}}
+          source={typeof pattern === 'string' ? {uri: pattern} : pattern}
         />
       ) : (
         <ActivityIndicator />

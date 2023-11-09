@@ -1,9 +1,10 @@
 import {useEffect, useState} from 'react';
 
 import fetchPattern from '../apis/fetchPattern';
+import localPatterns from '../patterns';
 
-const generateRandomPatern = () => {
-  return null;
+const generateRandomPattern = () => {
+  return localPatterns[Math.floor(Math.random() * localPatterns.length)];
 };
 
 const useRandomPattern = () => {
