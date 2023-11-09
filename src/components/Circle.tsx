@@ -14,7 +14,7 @@ interface CircleProps {
 }
 
 const Circle: React.FC<CircleProps> = ({position}) => {
-  const color = useRandomColor();
+  const [color, toggleColor] = useRandomColor();
   const diameter = useRandomSize();
   // Define a style object with the specified diameter and color
   const circleStyle: StyleProp<ViewStyle> = {

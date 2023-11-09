@@ -14,7 +14,7 @@ interface TriangleProps {
 }
 
 const Triangle: React.FC<TriangleProps> = ({position}) => {
-  const color = useRandomColor();
+  const [color, toggleColor] = useRandomColor();
   const size = useRandomSize();
 
   // Define the triangle's border widths to create the triangle shape

@@ -14,7 +14,7 @@ interface SquareProps {
 }
 
 const Square: React.FC<SquareProps> = ({position}) => {
-  const color = useRandomColor();
+  const [color, toggleColor] = useRandomColor();
   const size = useRandomSize();
 
   // Define a style object with the specified size and color
