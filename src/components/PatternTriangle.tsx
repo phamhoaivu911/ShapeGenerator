@@ -1,5 +1,5 @@
+import {ActivityIndicator, View} from 'react-native';
 import {Svg, Polygon, Defs, Pattern, Image as SvgImage} from 'react-native-svg';
-import {View} from 'react-native';
 import React from 'react';
 
 import {ShapeProps} from '../types';
@@ -20,26 +20,32 @@ const PatternTriangle: React.FC<ShapeProps> = ({position}) => {
         top: position.y - size / 2,
         width: size,
         height: size,
+        justifyContent: 'center',
+        alignItems: 'center',
       }}>
-      <Svg width="100%" height="100%">
-        <Defs>
-          <Pattern
-            id="image"
-            patternContentUnits="objectBoundingBox"
-            width={1}
-            height={1}>
-            <SvgImage
-              href={pattern}
-              x="0"
-              y="0"
-              width="1"
-              height="1"
-              preserveAspectRatio="xMidYMid slice"
-            />
-          </Pattern>
-        </Defs>
-        <Polygon points={points} fill="url(#image)" />
-      </Svg>
+      {pattern ? (
+        <Svg width="100%" height="100%">
+          <Defs>
+            <Pattern
+              id="image"
+              patternContentUnits="objectBoundingBox"
+              width={1}
+              height={1}>
+              <SvgImage
+                href={pattern}
+                x="0"
+                y="0"
+                width="1"
+                height="1"
+                preserveAspectRatio="xMidYMid slice"
+              />
+            </Pattern>
+          </Defs>
+          <Polygon points={points} fill="url(#image)" />
+        </Svg>
+      ) : (
+        <ActivityIndicator />
+      )}
     </View>
   );
 };

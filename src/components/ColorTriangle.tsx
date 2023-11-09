@@ -1,5 +1,5 @@
+import {ActivityIndicator, View} from 'react-native';
 import {Svg, Polygon} from 'react-native-svg';
-import {View} from 'react-native';
 import React from 'react';
 
 import {ShapeProps} from '../types';
@@ -20,10 +20,16 @@ const ColorTriangle: React.FC<ShapeProps> = ({position}) => {
         top: position.y - size / 2,
         width: size,
         height: size,
+        justifyContent: 'center',
+        alignItems: 'center',
       }}>
-      <Svg width="100%" height="100%">
-        <Polygon points={points} fill={color} />
-      </Svg>
+      {color ? (
+        <Svg width="100%" height="100%">
+          <Polygon points={points} fill={color} />
+        </Svg>
+      ) : (
+        <ActivityIndicator />
+      )}
     </View>
   );
 };

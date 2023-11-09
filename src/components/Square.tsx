@@ -1,4 +1,10 @@
-import {Image, StyleProp, ViewStyle} from 'react-native';
+import {
+  ActivityIndicator,
+  Image,
+  StyleProp,
+  View,
+  ViewStyle,
+} from 'react-native';
 import React from 'react';
 
 import {ShapeProps} from '../types';
@@ -9,23 +15,28 @@ const Square: React.FC<ShapeProps> = ({position}) => {
   const [pattern, togglePattern] = useRandomPattern();
   const size = useRandomSize();
 
-  // Define a style object with the specified size and color
   const squareStyle: StyleProp<ViewStyle> = {
     width: size,
     height: size,
     position: 'absolute',
     left: position.x - size / 2,
     top: position.y - size / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
   };
 
   return (
-    <Image
-      with={size}
-      height={size}
-      resizeMode="cover"
-      source={{uri: pattern}}
-      style={squareStyle}
-    />
+    <View style={squareStyle}>
+      {pattern ? (
+        <Image
+          style={{width: size, height: size}}
+          resizeMode="cover"
+          source={{uri: pattern}}
+        />
+      ) : (
+        <ActivityIndicator />
+      )}
+    </View>
   );
 };
 

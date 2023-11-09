@@ -1,4 +1,4 @@
-import {View, StyleProp, ViewStyle} from 'react-native';
+import {ActivityIndicator, StyleProp, View, ViewStyle} from 'react-native';
 import React from 'react';
 
 import {ShapeProps} from '../types';
@@ -9,7 +9,6 @@ const Circle: React.FC<ShapeProps> = ({position}) => {
   const [color, toggleColor] = useRandomColor();
   const diameter = useRandomSize();
 
-  // Define a style object with the specified diameter and color
   const circleStyle: StyleProp<ViewStyle> = {
     width: diameter,
     height: diameter,
@@ -18,9 +17,13 @@ const Circle: React.FC<ShapeProps> = ({position}) => {
     position: 'absolute',
     left: position.x - diameter / 2,
     top: position.y - diameter / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
   };
 
-  return <View style={circleStyle} />;
+  return (
+    <View style={circleStyle}>{color ? null : <ActivityIndicator />}</View>
+  );
 };
 
 export default Circle;
