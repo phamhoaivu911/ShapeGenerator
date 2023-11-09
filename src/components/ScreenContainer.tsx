@@ -1,7 +1,7 @@
 import {TouchableWithoutFeedback, View} from 'react-native';
 import React from 'react';
 
-const ScreenContainer = ({children}) => {
+const ScreenContainer = ({Component}) => {
   const [pressedPositions, setPressedPositions] = React.useState([]);
 
   const handlePress = event => {
@@ -15,7 +15,11 @@ const ScreenContainer = ({children}) => {
 
   return (
     <TouchableWithoutFeedback onPress={handlePress}>
-      <View style={{flex: 1}}>{children(pressedPositions)}</View>
+      <View style={{flex: 1}}>
+        {pressedPositions.map((position, index) => {
+          return <Component key={index} position={position} />;
+        })}
+      </View>
     </TouchableWithoutFeedback>
   );
 };

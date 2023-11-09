@@ -4,15 +4,7 @@ import ScreenContainer from '../components/ScreenContainer';
 import Square from '../components/Square';
 
 const SquaresScreen = () => {
-  return (
-    <ScreenContainer>
-      {pressedPositions => {
-        return pressedPositions.map((position, index) => {
-          return <Square key={index} position={position} />;
-        });
-      }}
-    </ScreenContainer>
-  );
+  return <ScreenContainer Component={Square} />;
 };
 
 export default SquaresScreen;
