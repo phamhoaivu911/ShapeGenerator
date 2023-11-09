@@ -1,13 +1,8 @@
-import {
-  ActivityIndicator,
-  StyleProp,
-  TouchableWithoutFeedback,
-  View,
-  ViewStyle,
-} from 'react-native';
+import {ActivityIndicator, StyleProp, View, ViewStyle} from 'react-native';
 import React from 'react';
 
 import {ShapeProps} from '../types';
+import DoubleTapView from './DoubleTapView';
 import useRandomColor from '../hooks/useRandomColor';
 import useRandomSize from '../hooks/useRandomSize';
 
@@ -28,11 +23,11 @@ const Circle: React.FC<ShapeProps> = ({position}) => {
   };
 
   return (
-    <TouchableWithoutFeedback onPress={toggleColor}>
+    <DoubleTapView onDoubleTap={toggleColor}>
       <View style={circleStyle}>
         {isFetchingColor ? <ActivityIndicator /> : null}
       </View>
-    </TouchableWithoutFeedback>
+    </DoubleTapView>
   );
 };
 
