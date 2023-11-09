@@ -8,7 +8,7 @@ import useRandomSize from '../hooks/useRandomSize';
 
 const PatternTriangle: React.FC<ShapeProps> = ({position}) => {
   const size = useRandomSize();
-  const [pattern, togglePattern] = useRandomPattern();
+  const [pattern, isFetchingPattern, togglePattern] = useRandomPattern();
 
   const points = `0,${size} ${size / 2},0 ${size},${size}`;
 
@@ -23,7 +23,9 @@ const PatternTriangle: React.FC<ShapeProps> = ({position}) => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      {pattern ? (
+      {isFetchingPattern ? (
+        <ActivityIndicator />
+      ) : (
         <Svg width="100%" height="100%">
           <Defs>
             <Pattern
@@ -43,8 +45,6 @@ const PatternTriangle: React.FC<ShapeProps> = ({position}) => {
           </Defs>
           <Polygon points={points} fill="url(#image)" />
         </Svg>
-      ) : (
-        <ActivityIndicator />
       )}
     </View>
   );

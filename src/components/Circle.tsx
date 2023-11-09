@@ -1,4 +1,10 @@
-import {ActivityIndicator, StyleProp, View, ViewStyle} from 'react-native';
+import {
+  ActivityIndicator,
+  StyleProp,
+  TouchableWithoutFeedback,
+  View,
+  ViewStyle,
+} from 'react-native';
 import React from 'react';
 
 import {ShapeProps} from '../types';
@@ -6,7 +12,7 @@ import useRandomColor from '../hooks/useRandomColor';
 import useRandomSize from '../hooks/useRandomSize';
 
 const Circle: React.FC<ShapeProps> = ({position}) => {
-  const [color, toggleColor] = useRandomColor();
+  const [color, isFetchingColor, toggleColor] = useRandomColor();
   const diameter = useRandomSize();
 
   const circleStyle: StyleProp<ViewStyle> = {
@@ -22,7 +28,11 @@ const Circle: React.FC<ShapeProps> = ({position}) => {
   };
 
   return (
-    <View style={circleStyle}>{color ? null : <ActivityIndicator />}</View>
+    <TouchableWithoutFeedback onPress={toggleColor}>
+      <View style={circleStyle}>
+        {isFetchingColor ? <ActivityIndicator /> : null}
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

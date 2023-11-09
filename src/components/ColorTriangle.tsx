@@ -7,7 +7,7 @@ import useRandomColor from '../hooks/useRandomColor';
 import useRandomSize from '../hooks/useRandomSize';
 
 const ColorTriangle: React.FC<ShapeProps> = ({position}) => {
-  const [color, toggleColor] = useRandomColor();
+  const [color, isFetchingColor, toggleColor] = useRandomColor();
   const size = useRandomSize();
 
   const points = `0,${size} ${size / 2},0 ${size},${size}`;
@@ -23,12 +23,12 @@ const ColorTriangle: React.FC<ShapeProps> = ({position}) => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      {color ? (
+      {isFetchingColor ? (
+        <ActivityIndicator />
+      ) : (
         <Svg width="100%" height="100%">
           <Polygon points={points} fill={color} />
         </Svg>
-      ) : (
-        <ActivityIndicator />
       )}
     </View>
   );

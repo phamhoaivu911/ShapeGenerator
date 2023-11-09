@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 
-import fetchColor from '../apis/fetchColor';
+import fetchRemoteColor from '../apis/fetchColor';
 
 const generateRandomColor = () => {
   // From https://css-tricks.com/snippets/javascript/random-hex-color/
@@ -9,15 +9,28 @@ const generateRandomColor = () => {
 
 const useRandomColor = () => {
   const [color, setColor] = useState(null);
+  const [isFetchingColor, setIsFetchingColor] = useState(false);
+
+  const fetchColor = () => {
+    setIsFetchingColor(true);
+
+    fetchRemoteColor({
+      onSuccess: color => {
+        setIsFetchingColor(false);
+        setColor(color);
+      },
+      onError: () => {
+        setIsFetchingColor(false);
+        setColor(generateRandomColor());
+      },
+    });
+  };
 
   useEffect(() => {
-    fetchColor({
-      onSuccess: setColor,
-      onError: () => setColor(generateRandomColor()),
-    });
+    fetchColor();
   }, []);
 
-  return [color, fetchColor];
+  return [color, isFetchingColor, fetchColor];
 };
 
 export default useRandomColor;

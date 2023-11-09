@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 
-import fetchPattern from '../apis/fetchPattern';
+import fetchRemotePattern from '../apis/fetchPattern';
 import localPatterns from '../patterns';
 
 const generateRandomPattern = () => {
@@ -9,15 +9,28 @@ const generateRandomPattern = () => {
 
 const useRandomPattern = () => {
   const [pattern, setPattern] = useState(null);
+  const [isFetchingPattern, setIsFetchingPattern] = useState(false);
+
+  const fetchPattern = () => {
+    setIsFetchingPattern(true);
+
+    fetchRemotePattern({
+      onSuccess: pattern => {
+        setIsFetchingPattern(false);
+        setPattern(pattern);
+      },
+      onError: () => {
+        setIsFetchingPattern(false);
+        setPattern(generateRandomPattern());
+      },
+    });
+  };
 
   useEffect(() => {
-    fetchPattern({
-      onSuccess: setPattern,
-      onError: () => setPattern(generateRandomPattern()),
-    });
+    fetchPattern();
   }, []);
 
-  return [pattern, fetchPattern];
+  return [pattern, isFetchingPattern, fetchPattern];
 };
 
 export default useRandomPattern;

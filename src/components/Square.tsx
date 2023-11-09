@@ -12,7 +12,7 @@ import useRandomPattern from '../hooks/useRandomPattern';
 import useRandomSize from '../hooks/useRandomSize';
 
 const Square: React.FC<ShapeProps> = ({position}) => {
-  const [pattern, togglePattern] = useRandomPattern();
+  const [pattern, isFetchingPattern, togglePattern] = useRandomPattern();
   const size = useRandomSize();
 
   const squareStyle: StyleProp<ViewStyle> = {
@@ -27,14 +27,14 @@ const Square: React.FC<ShapeProps> = ({position}) => {
 
   return (
     <View style={squareStyle}>
-      {pattern ? (
+      {isFetchingPattern ? (
+        <ActivityIndicator />
+      ) : (
         <Image
           style={{width: size, height: size}}
           resizeMode="cover"
           source={typeof pattern === 'string' ? {uri: pattern} : pattern}
         />
-      ) : (
-        <ActivityIndicator />
       )}
     </View>
   );
