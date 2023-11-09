@@ -1,4 +1,5 @@
-import {TouchableWithoutFeedback, View} from 'react-native';
+import {TouchableWithoutFeedback, View, useColorScheme} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import RNShake from 'react-native-shake';
 import React, {useEffect} from 'react';
 
@@ -9,6 +10,12 @@ interface ScreenContainerProps {
 }
 
 const ScreenContainer: React.FC<ScreenContainerProps> = ({Component}) => {
+  const isDarkMode = useColorScheme() === 'dark';
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? 'black' : 'white',
+  };
+
   const [pressedPositions, setPressedPositions] = React.useState([]);
   useEffect(() => {
     const subscription = RNShake.addListener(() => {
@@ -29,7 +36,7 @@ const ScreenContainer: React.FC<ScreenContainerProps> = ({Component}) => {
 
   return (
     <TouchableWithoutFeedback onPress={handlePress}>
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, ...backgroundStyle}}>
         {pressedPositions.map((position, index) => {
           return <Component key={index} position={position} />;
         })}

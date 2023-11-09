@@ -21,18 +21,26 @@ const Tab = createBottomTabNavigator();
 
 const App: () => JSX.Element = () => {
   const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
+  const tabBarStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
+  const headerStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : 'white',
+  };
+
+  const headerTitleStyle = {
+    color: isDarkMode ? 'white' : 'black',
   };
 
   return (
     <NavigationContainer>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <Tab.Navigator>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <Tab.Navigator
+        screenOptions={{
+          tabBarStyle,
+          headerStyle,
+          headerTitleStyle,
+        }}>
         <Tab.Screen
           name="Home"
           component={HomeScreen}
