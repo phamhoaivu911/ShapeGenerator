@@ -3,12 +3,13 @@
 import {View, StyleSheet, ViewStyle} from 'react-native';
 import React from 'react';
 
-interface TriangleProps {
-  size: number;
-  color: string;
-}
+import useRandomColor from '../hooks/useRandomColor';
+import useRandomSize from '../hooks/useRandomSize';
 
-const Triangle: React.FC<TriangleProps> = ({size, color}) => {
+const Triangle: React.FC = () => {
+  const color = useRandomColor();
+  const size = useRandomSize();
+
   // Define the triangle's border widths to create the triangle shape
   const borderStyles: ViewStyle = {
     width: 0,

@@ -27,9 +27,9 @@ const App: () => JSX.Element = () => {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <View style={[{flex: 1}, backgroundStyle]}>
-        <Square color="red" size={100} />
-        <Circle color="blue" diameter={100} />
-        <Triangle color="pink" size={200} />
+        <Square />
+        <Circle />
+        <Triangle />
       </View>
     </SafeAreaView>
   );

@@ -3,12 +3,12 @@
 import {View, StyleSheet, StyleProp, ViewStyle} from 'react-native';
 import React from 'react';
 
-interface CircleProps {
-  diameter: number;
-  color: string;
-}
+import useRandomColor from '../hooks/useRandomColor';
+import useRandomSize from '../hooks/useRandomSize';
 
-const Circle: React.FC<CircleProps> = ({diameter, color}) => {
+const Circle: React.FC = () => {
+  const color = useRandomColor();
+  const diameter = useRandomSize();
   // Define a style object with the specified diameter and color
   const circleStyle: StyleProp<ViewStyle> = {
     width: diameter,
