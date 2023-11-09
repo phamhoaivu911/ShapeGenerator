@@ -6,7 +6,14 @@ import React from 'react';
 import useRandomColor from '../hooks/useRandomColor';
 import useRandomSize from '../hooks/useRandomSize';
 
-const Circle: React.FC = () => {
+interface CircleProps {
+  position: {
+    x: number;
+    y: number;
+  };
+}
+
+const Circle: React.FC<CircleProps> = ({position}) => {
   const color = useRandomColor();
   const diameter = useRandomSize();
   // Define a style object with the specified diameter and color
@@ -14,7 +21,10 @@ const Circle: React.FC = () => {
     width: diameter,
     height: diameter,
     backgroundColor: color,
-    borderRadius: diameter / 2, // Set border radius to make it a circle
+    borderRadius: diameter,
+    position: 'absolute',
+    left: position.x - diameter / 2,
+    top: position.y - diameter / 2,
   };
 
   return <View style={[styles.circle, circleStyle]} />;

@@ -6,7 +6,14 @@ import React from 'react';
 import useRandomColor from '../hooks/useRandomColor';
 import useRandomSize from '../hooks/useRandomSize';
 
-const Square: React.FC = () => {
+interface SquareProps {
+  position: {
+    x: number;
+    y: number;
+  };
+}
+
+const Square: React.FC<SquareProps> = ({position}) => {
   const color = useRandomColor();
   const size = useRandomSize();
 
@@ -15,6 +22,9 @@ const Square: React.FC = () => {
     width: size,
     height: size,
     backgroundColor: color,
+    position: 'absolute',
+    left: position.x - size / 2,
+    top: position.y - size / 2,
   };
 
   return <View style={[styles.square, squareStyle]} />;

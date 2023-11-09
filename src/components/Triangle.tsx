@@ -6,7 +6,14 @@ import React from 'react';
 import useRandomColor from '../hooks/useRandomColor';
 import useRandomSize from '../hooks/useRandomSize';
 
-const Triangle: React.FC = () => {
+interface TriangleProps {
+  position: {
+    x: number;
+    y: number;
+  };
+}
+
+const Triangle: React.FC<TriangleProps> = ({position}) => {
   const color = useRandomColor();
   const size = useRandomSize();
 
@@ -22,6 +29,9 @@ const Triangle: React.FC = () => {
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
     borderBottomColor: color,
+    position: 'absolute',
+    left: position.x - size / 2,
+    top: position.y - size / 2,
   };
 
   return <View style={[styles.triangle, borderStyles]} />;

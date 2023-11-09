@@ -26,10 +26,10 @@ const App: () => JSX.Element = () => {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <View style={[{flex: 1}, backgroundStyle]}>
-        <Square />
-        <Circle />
-        <Triangle />
+      <View style={{flex: 1}}>
+        <Square position={{x: 250, y: 250}} />
+        <Circle position={{x: 350, y: 350}} />
+        <Triangle position={{x: 250, y: 500}} />
       </View>
     </SafeAreaView>
   );
