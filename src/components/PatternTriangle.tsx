@@ -2,17 +2,11 @@ import {Svg, Polygon, Defs, Pattern, Image as SvgImage} from 'react-native-svg';
 import {View} from 'react-native';
 import React from 'react';
 
+import {ShapeProps} from '../types';
 import useRandomPattern from '../hooks/useRandomPattern';
 import useRandomSize from '../hooks/useRandomSize';
 
-interface TriangleProps {
-  position: {
-    x: number;
-    y: number;
-  };
-}
-
-const PatternTriangle: React.FC<TriangleProps> = ({position}) => {
+const PatternTriangle: React.FC<ShapeProps> = ({position}) => {
   const size = useRandomSize();
   const [pattern, togglePattern] = useRandomPattern();
 

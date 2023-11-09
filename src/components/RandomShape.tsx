@@ -1,15 +1,9 @@
 import React from 'react';
 
+import {ShapeProps} from '../types';
 import useRandomShape from '../hooks/useRandomShape';
 
-interface RandomShapeProps {
-  position: {
-    x: number;
-    y: number;
-  };
-}
-
-const RandomShape: React.FC<RandomShapeProps> = ({position}) => {
+const RandomShape: React.FC<ShapeProps> = ({position}) => {
   const Shape = useRandomShape();
 
   return <Shape position={position} />;

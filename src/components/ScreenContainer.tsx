@@ -1,7 +1,13 @@
 import {TouchableWithoutFeedback, View} from 'react-native';
 import React from 'react';
 
-const ScreenContainer = ({Component}) => {
+import {ShapeProps} from '../types';
+
+interface ScreenContainerProps {
+  Component: React.FC<ShapeProps>;
+}
+
+const ScreenContainer: React.FC<ScreenContainerProps> = ({Component}) => {
   const [pressedPositions, setPressedPositions] = React.useState([]);
 
   const handlePress = event => {

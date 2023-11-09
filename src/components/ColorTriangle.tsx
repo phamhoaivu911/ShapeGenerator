@@ -2,17 +2,11 @@ import {Svg, Polygon} from 'react-native-svg';
 import {View} from 'react-native';
 import React from 'react';
 
+import {ShapeProps} from '../types';
 import useRandomColor from '../hooks/useRandomColor';
 import useRandomSize from '../hooks/useRandomSize';
 
-interface TriangleProps {
-  position: {
-    x: number;
-    y: number;
-  };
-}
-
-const ColorTriangle: React.FC<TriangleProps> = ({position}) => {
+const ColorTriangle: React.FC<ShapeProps> = ({position}) => {
   const [color, toggleColor] = useRandomColor();
   const size = useRandomSize();
 
