@@ -6,6 +6,7 @@
  */
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaView, StatusBar, View, useColorScheme} from 'react-native';
 import React from 'react';
 
@@ -21,17 +22,19 @@ const App: () => JSX.Element = () => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: 'transparent'}}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <View style={{flex: 1}}>
-        <Square position={{x: 250, y: 250}} />
-        <Circle position={{x: 350, y: 350}} />
-        <Triangle position={{x: 250, y: 500}} />
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView style={{flex: 1, backgroundColor: 'transparent'}}>
+        <StatusBar
+          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+          backgroundColor={backgroundStyle.backgroundColor}
+        />
+        <View style={{flex: 1}}>
+          <Square position={{x: 250, y: 250}} />
+          <Circle position={{x: 350, y: 350}} />
+          <Triangle position={{x: 250, y: 500}} />
+        </View>
+      </SafeAreaView>
+    </NavigationContainer>
   );
 };
 
