@@ -1,5 +1,6 @@
 import {TouchableWithoutFeedback, View} from 'react-native';
-import React from 'react';
+import RNShake from 'react-native-shake';
+import React, {useEffect} from 'react';
 
 import {ShapeProps} from '../types';
 
@@ -9,6 +10,13 @@ interface ScreenContainerProps {
 
 const ScreenContainer: React.FC<ScreenContainerProps> = ({Component}) => {
   const [pressedPositions, setPressedPositions] = React.useState([]);
+  useEffect(() => {
+    const subscription = RNShake.addListener(() => {
+      setPressedPositions([]);
+    });
+
+    return subscription.remove;
+  }, [setPressedPositions]);
 
   const handlePress = event => {
     const {locationX, locationY} = event.nativeEvent;
