@@ -6,12 +6,7 @@
  */
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  useColorScheme,
-} from 'react-native';
+import {SafeAreaView, StatusBar, View, useColorScheme} from 'react-native';
 import React from 'react';
 
 import Circle from './src/components/Circle';
@@ -31,13 +26,11 @@ const App: () => JSX.Element = () => {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={[{flex: 1}, backgroundStyle]}>
+      <View style={[{flex: 1}, backgroundStyle]}>
         <Square color="red" size={100} />
         <Circle color="blue" diameter={100} />
         <Triangle color="pink" size={200} />
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
