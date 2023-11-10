@@ -31,3 +31,9 @@ Generate random squares, circles, and triangles
 
 -   The current implementation does not draw real circles and triangles. They're still square View with circles and triangles above them. As a result, users cannot press on the remaining View to spawn new shapes.
 -   There's an issue with this item. After dragging a shape to another position, then press on its old position. The screen spawns a new shape at the incorrect position.
+
+### Screenshots
+<img width="489" alt="Screenshot 2023-11-10 at 17 44 07" src="https://github.com/phamhoaivu911/ShapeGenerator/assets/4929170/a8334245-936a-4ec4-8002-e88285bed09e">|<img width="489" alt="Screenshot 2023-11-10 at 17 44 04" src="https://github.com/phamhoaivu911/ShapeGenerator/assets/4929170/c892c3a6-0844-4caa-81f2-58e08604ad05">
+:-:|:-:
+<img width="489" alt="Screenshot 2023-11-10 at 17 44 02" src="https://github.com/phamhoaivu911/ShapeGenerator/assets/4929170/5f4729ee-8e29-4a02-ae7d-fa288c8b0cea">|<img width="489" alt="Screenshot 2023-11-10 at 17 42 58" src="https://github.com/phamhoaivu911/ShapeGenerator/assets/4929170/aa691bc4-d6e2-4efb-8938-29708c26f5f0">
+
