@@ -6,6 +6,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import FastImage from 'react-native-fast-image';
 import React from 'react';
 
 import {ShapeProps} from '../types';
@@ -13,6 +14,8 @@ import DoubleTapView from './DoubleTapView';
 import useFadeInAnimationStyle from '../hooks/useFadeInAnimationStyle';
 import useRandomPattern from '../hooks/useRandomPattern';
 import useRandomSize from '../hooks/useRandomSize';
+
+const AnimatedFastImage = Animated.createAnimatedComponent(FastImage);
 
 const Square: React.FC<ShapeProps> = ({position}) => {
   const [pattern, isFetchingPattern, togglePattern] = useRandomPattern();
@@ -33,7 +36,7 @@ const Square: React.FC<ShapeProps> = ({position}) => {
   return (
     <DoubleTapView onDoubleTap={togglePattern}>
       <View style={squareStyle}>
-        <Animated.Image
+        <AnimatedFastImage
           style={{width: size, height: size, ...fadeInAnimationStyle}}
           resizeMode="cover"
           source={typeof pattern === 'string' ? {uri: pattern} : pattern}
