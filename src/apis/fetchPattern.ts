@@ -7,7 +7,6 @@ const fetchPattern = ({onSuccess, onError}: FetchInput) => {
       onSuccess(json[0].imageUrl);
     })
     .catch(error => {
-      console.error(error);
       onError(error);
     });
 };

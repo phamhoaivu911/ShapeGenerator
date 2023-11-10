@@ -7,7 +7,6 @@ const fetchColor = ({onSuccess, onError}: FetchInput) => {
       onSuccess(`#${json[0].hex}`);
     })
     .catch(error => {
-      console.error(error);
       onError(error);
     });
 };
