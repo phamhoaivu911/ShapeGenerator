@@ -13,7 +13,6 @@ const DoubleTapView: React.FC<DoubleTapViewProps> = ({
   doubleTapDelay = 300,
 }) => {
   const [tapCount, setTapCount] = useState(0);
-  const doubleTapRef = useRef(null);
   const doubleTapTimeoutRef = useRef<
     ReturnType<typeof setTimeout> | undefined
   >();
