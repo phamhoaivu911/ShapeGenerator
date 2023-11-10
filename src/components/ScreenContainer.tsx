@@ -8,6 +8,7 @@ import RNShake from 'react-native-shake';
 import React, {useEffect} from 'react';
 
 import {Position, ShapeProps} from '../types';
+import ZoomableView from './ZoomableView';
 
 interface ScreenContainerProps {
   Component: React.FC<ShapeProps>;
@@ -44,9 +45,11 @@ const ScreenContainer: React.FC<ScreenContainerProps> = ({Component}) => {
   return (
     <TouchableWithoutFeedback onPress={handlePress}>
       <View style={{flex: 1, ...backgroundStyle}}>
-        {pressedPositions.map((position, index) => {
-          return <Component key={index} position={position} />;
-        })}
+        <ZoomableView>
+          {pressedPositions.map((position, index) => {
+            return <Component key={index} position={position} />;
+          })}
+        </ZoomableView>
       </View>
     </TouchableWithoutFeedback>
   );
