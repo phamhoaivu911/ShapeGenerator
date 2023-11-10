@@ -1,3 +1,4 @@
+import {showMessage} from 'react-native-flash-message';
 import {useEffect, useState} from 'react';
 
 import fetchRemotePattern from '../apis/fetchPattern';
@@ -26,6 +27,12 @@ const useRandomPattern: () => [
       onError: () => {
         setIsFetchingPattern(false);
         setPattern(generateRandomPattern());
+        showMessage({
+          message: 'Notice',
+          description:
+            'Failed to fetch remote pattern, use random pattern from local instead.',
+          type: 'warning',
+        });
       },
     });
   };

@@ -9,6 +9,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {StatusBar, useColorScheme} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import FlashMessage from 'react-native-flash-message';
 import React from 'react';
 
 import CirclesScreen from './src/screens/CirclesScreen';
@@ -62,6 +63,7 @@ const App: () => JSX.Element = () => {
           options={{tabBarIcon: TabBarIcon.TriangleIcon}}
         />
       </Tab.Navigator>
+      <FlashMessage position="top" />
     </NavigationContainer>
   );
 };

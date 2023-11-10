@@ -4,6 +4,7 @@ import {
   useColorScheme,
   GestureResponderEvent,
 } from 'react-native';
+import {showMessage} from 'react-native-flash-message';
 import RNShake from 'react-native-shake';
 import React, {useEffect} from 'react';
 
@@ -28,6 +29,11 @@ const ScreenContainer: React.FC<ScreenContainerProps> = ({Component}) => {
   useEffect(() => {
     const subscription = RNShake.addListener(() => {
       setPressedPositions([]);
+      showMessage({
+        message: 'All Clear',
+        description: 'Shapes cleared successfully',
+        type: 'success',
+      });
     });
 
     return subscription.remove;

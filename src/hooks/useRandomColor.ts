@@ -1,3 +1,4 @@
+import {showMessage} from 'react-native-flash-message';
 import {useEffect, useState} from 'react';
 
 import fetchRemoteColor from '../apis/fetchColor';
@@ -22,6 +23,12 @@ const useRandomColor: () => [string | undefined, boolean, () => void] = () => {
       onError: () => {
         setIsFetchingColor(false);
         setColor(generateRandomColor());
+        showMessage({
+          message: 'Notice',
+          description:
+            'Failed to fetch remote color, use random color from local instead.',
+          type: 'warning',
+        });
       },
     });
   };
