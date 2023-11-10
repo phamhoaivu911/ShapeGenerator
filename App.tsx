@@ -56,7 +56,11 @@ const App: () => JSX.Element = () => {
           component={CirclesScreen}
           options={{tabBarIcon: TabBarIcon.CircleIcon}}
         />
-        <Tab.Screen name="Triangles" component={TrianglesScreen} />
+        <Tab.Screen
+          name="Triangles"
+          component={TrianglesScreen}
+          options={{tabBarIcon: TabBarIcon.TriangleIcon}}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
