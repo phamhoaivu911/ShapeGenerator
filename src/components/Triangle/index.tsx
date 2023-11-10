@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {ShapeProps} from '../types';
-import useTriangleType from '../hooks/useTriangleType';
+import {ShapeProps} from '../../types';
+import useTriangleType from '../../hooks/useTriangleType';
 
 const Triangle: React.FC<ShapeProps> = ({position}) => {
   const TriangleType = useTriangleType();

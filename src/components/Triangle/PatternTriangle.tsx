@@ -2,11 +2,11 @@ import {ActivityIndicator, Animated, StyleSheet, View} from 'react-native';
 import {Svg, Polygon, Defs, Pattern, Image as SvgImage} from 'react-native-svg';
 import React from 'react';
 
-import {ShapeProps} from '../types';
-import DoubleTapView from './DoubleTapView';
-import useFadeInAnimationStyle from '../hooks/useFadeInAnimationStyle';
-import useRandomPattern from '../hooks/useRandomPattern';
-import useRandomSize from '../hooks/useRandomSize';
+import {ShapeProps} from '../../types';
+import DoubleTapView from '../DoubleTapView';
+import useFadeInAnimationStyle from '../../hooks/useFadeInAnimationStyle';
+import useRandomPattern from '../../hooks/useRandomPattern';
+import useRandomSize from '../../hooks/useRandomSize';
 
 const PatternTriangle: React.FC<ShapeProps> = ({position}) => {
   const size = useRandomSize();

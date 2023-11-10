@@ -2,11 +2,11 @@ import {ActivityIndicator, Animated, StyleSheet, View} from 'react-native';
 import {Svg, Polygon} from 'react-native-svg';
 import React from 'react';
 
-import {ShapeProps} from '../types';
-import DoubleTapView from './DoubleTapView';
-import useFadeInAnimationStyle from '../hooks/useFadeInAnimationStyle';
-import useRandomColor from '../hooks/useRandomColor';
-import useRandomSize from '../hooks/useRandomSize';
+import {ShapeProps} from '../../types';
+import DoubleTapView from '../DoubleTapView';
+import useFadeInAnimationStyle from '../../hooks/useFadeInAnimationStyle';
+import useRandomColor from '../../hooks/useRandomColor';
+import useRandomSize from '../../hooks/useRandomSize';
 
 const ColorTriangle: React.FC<ShapeProps> = ({position}) => {
   const [color, isFetchingColor, toggleColor] = useRandomColor();

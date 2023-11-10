@@ -1,7 +1,7 @@
 import {useRef} from 'react';
 
-import ColorTriangle from '../components/ColorTriangle';
-import PatternTriangle from '../components/PatternTriangle';
+import ColorTriangle from '../components/Triangle/ColorTriangle';
+import PatternTriangle from '../components/Triangle/PatternTriangle';
 
 const TRIANGLES = [ColorTriangle, PatternTriangle];
 
