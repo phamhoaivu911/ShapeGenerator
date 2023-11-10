@@ -7,8 +7,8 @@ const generateRandomColor = () => {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 };
 
-const useRandomColor = () => {
-  const [color, setColor] = useState(null);
+const useRandomColor: () => [string | undefined, boolean, () => void] = () => {
+  const [color, setColor] = useState<string | undefined>();
   const [isFetchingColor, setIsFetchingColor] = useState(false);
 
   const fetchColor = () => {

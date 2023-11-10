@@ -1,7 +1,9 @@
 import {View} from 'react-native';
 import React from 'react';
 
-const SquareIcon = ({color}) => {
+import {TabBarIconProps} from '../types';
+
+const SquareIcon: React.FC<TabBarIconProps> = ({color}) => {
   return (
     <View
       style={{
@@ -13,7 +15,7 @@ const SquareIcon = ({color}) => {
   );
 };
 
-const CircleIcon = ({color}) => {
+const CircleIcon: React.FC<TabBarIconProps> = ({color}) => {
   return (
     <View
       style={{
@@ -26,7 +28,7 @@ const CircleIcon = ({color}) => {
   );
 };
 
-const TriangleIcon = ({color}) => {
+const TriangleIcon: React.FC<TabBarIconProps> = ({color}) => {
   return (
     <View
       style={{
@@ -44,7 +46,7 @@ const TriangleIcon = ({color}) => {
   );
 };
 
-const HomeIcon = ({color}) => {
+const HomeIcon: React.FC<TabBarIconProps> = ({color}) => {
   return (
     <View
       style={{

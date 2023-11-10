@@ -27,7 +27,6 @@ const Circle: React.FC<ShapeProps> = ({position}) => {
     height: diameter,
     backgroundColor: color,
     borderRadius: diameter,
-    ...fadeInAnimationStyle,
   };
 
   return (
@@ -42,7 +41,8 @@ const Circle: React.FC<ShapeProps> = ({position}) => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Animated.View style={circleStyle}></Animated.View>
+        <Animated.View
+          style={[circleStyle, fadeInAnimationStyle]}></Animated.View>
         {isFetchingColor ? (
           <View
             style={{

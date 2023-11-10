@@ -7,8 +7,12 @@ const generateRandomPattern = () => {
   return localPatterns[Math.floor(Math.random() * localPatterns.length)];
 };
 
-const useRandomPattern = () => {
-  const [pattern, setPattern] = useState(null);
+const useRandomPattern: () => [
+  string | undefined,
+  boolean,
+  () => void,
+] = () => {
+  const [pattern, setPattern] = useState<string | undefined>();
   const [isFetchingPattern, setIsFetchingPattern] = useState(false);
 
   const fetchPattern = () => {

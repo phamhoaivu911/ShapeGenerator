@@ -3,7 +3,7 @@ import React, {useRef, useState, useEffect} from 'react';
 
 type DoubleTapViewProps = {
   onDoubleTap: () => void;
-  children: ReactNode;
+  children: JSX.Element;
   doubleTapDelay?: number;
 };
 
@@ -14,7 +14,9 @@ const DoubleTapView: React.FC<DoubleTapViewProps> = ({
 }) => {
   const [tapCount, setTapCount] = useState(0);
   const doubleTapRef = useRef(null);
-  const doubleTapTimeoutRef = useRef(null);
+  const doubleTapTimeoutRef = useRef<
+    ReturnType<typeof setTimeout> | undefined
+  >();
 
   useEffect(() => {
     if (tapCount === 2) {

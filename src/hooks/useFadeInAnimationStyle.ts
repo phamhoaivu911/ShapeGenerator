@@ -1,7 +1,7 @@
 import {Animated} from 'react-native';
 import {useEffect, useRef} from 'react';
 
-const useFadeInAnimationStyle = (size, ready = false) => {
+const useFadeInAnimationStyle = (size: number, ready = false) => {
   const fadeAnimation = useRef(new Animated.Value(0));
 
   useEffect(() => {
